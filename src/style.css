@@ -2,7 +2,9 @@
 
 @theme {
   --font-serif: 'Playfair Display', serif;
-  --font-sans: 'Montserrat', sans-serif;
+  --font-sans: 'Jost', sans-serif;
+  --font-cursive: 'Alex Brush', cursive;
+  
   --color-brand-sand: #d7cdc4;
   --color-brand-brown: #4a3b32;
   --color-brand-dark: #2c2520;
@@ -19,5 +21,5 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .text-cursive {
-  font-family: 'Great Vibes', cursive; /* We will use a web font for this */
+  font-family: var(--font-cursive);
 }
