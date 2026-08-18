@@ -24,3 +24,82 @@ mobileLinks.forEach(link => {
     }
   });
 });
+
+import { client, urlFor } from './sanity';
+
+// Fetch portfolio from Sanity
+async function loadPortfolio() {
+  const grid = document.getElementById('portfolio-grid');
+  if (!grid) return;
+
+  try {
+    const projects = await client.fetch(`*[_type == "portfolio"] | order(_createdAt desc) {
+      ...,
+      "videoFileUrl": videoFile.asset->url
+    }`);
+
+    if (projects.length === 0) {
+      grid.innerHTML = '<p class="text-center w-full text-brand-dark/50 italic py-10">Немає проєктів. Додайте перше відео в Sanity Studio!</p>';
+      return;
+    }
+
+    grid.innerHTML = projects.map(project => {
+      let mediaContent = '';
+      let isVideo = false;
+
+      if (project.mediaType === 'image' && project.image) {
+        mediaContent = `<img src="${urlFor(project.image).width(800).url()}" alt="${project.title}" class="w-full h-full object-cover opacity-90 pointer-events-none" />`;
+      } else if (project.mediaType === 'video' && (project.videoUrl || project.videoFileUrl)) {
+        isVideo = true;
+        const url = project.videoUrl || project.videoFileUrl;
+        mediaContent = `<video src="${url}" class="w-full h-full object-cover opacity-90 pointer-events-none" loop playsinline preload="metadata"></video>`;
+      }
+
+      return `
+        <div class="portfolio-item snap-center shrink-0 mx-auto w-72 aspect-9/19.5 bg-black rounded-[2.5rem] p-2 relative group cursor-pointer hover:-translate-y-2 transition-transform duration-300">
+          <div class="w-full h-full rounded-4xl overflow-hidden relative bg-zinc-800 flex items-center justify-center">
+            ${mediaContent}
+            <div class="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition duration-300 pointer-events-none"></div>
+            ${isVideo ? `
+            <div class="play-btn absolute w-14 h-14 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center text-white shadow-lg transition-all duration-300 z-10">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M8 5v14l11-7z" />
+              </svg>
+            </div>
+            ` : ''}
+            <div class="absolute inset-0 flex flex-col justify-end p-6 text-center z-20 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none">
+              <h4 class="text-white font-serif text-2xl mb-2 drop-shadow-lg">${project.title}</h4>
+              <p class="text-white/90 text-[10px] uppercase tracking-[0.2em] drop-shadow-md">${project.category}</p>
+            </div>
+          </div>
+          <div class="absolute top-0 inset-x-0 h-6 bg-black rounded-b-3xl mx-auto w-1/3 z-20 pointer-events-none"></div>
+        </div>
+      `;
+    }).join('');
+
+    // Add click listeners for video play/pause
+    const items = grid.querySelectorAll('.portfolio-item');
+    items.forEach(item => {
+      const video = item.querySelector('video');
+      const playBtn = item.querySelector('.play-btn');
+
+      if (video && playBtn) {
+        item.addEventListener('click', () => {
+          if (video.paused) {
+            video.play();
+            playBtn.classList.add('opacity-0', 'scale-150');
+          } else {
+            video.pause();
+            playBtn.classList.remove('opacity-0', 'scale-150');
+          }
+        });
+      }
+    });
+
+  } catch (error) {
+    console.error('Error fetching portfolio:', error);
+    grid.innerHTML = '<p class="text-center w-full text-red-500 py-10">Помилка завантаження бази даних.</p>';
+  }
+}
+
+document.addEventListener('DOMContentLoaded', loadPortfolio);
