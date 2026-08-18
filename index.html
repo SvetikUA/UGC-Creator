@@ -1,197 +1,422 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" class="scroll-smooth">
-<head>
-  <meta charset="UTF-8" />
-  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Svitlana Yavorska | UGC Creator</title>
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Svitlana Yavorska | UGC Creator</title>
 
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Jost:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-</head>
-<body class="antialiased">
-  <!-- Navigation -->
-  <nav class="fixed w-full top-0 z-50 bg-brand-sand/90 backdrop-blur-sm border-b border-brand-brown/10">
-    <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-      <a href="#" class="text-2xl font-bold font-serif tracking-wide text-brand-brown">SY.</a>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="antialiased">
+    <!-- Navigation -->
+    <nav
+      class="fixed w-full top-0 z-50 bg-brand-sand/90 backdrop-blur-sm border-b border-brand-brown/10"
+    >
+      <div
+        class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center"
+      >
+        <a
+          href="#"
+          class="text-2xl font-bold font-serif tracking-wide text-brand-brown"
+        >
+          SY.
+        </a>
 
-      <!-- Desktop Menu -->
-      <div class="hidden md:flex space-x-8 text-sm uppercase tracking-widest text-brand-dark/70">
-        <a href="#about" class="hover:text-brand-brown transition-colors">About</a>
-        <a href="#services" class="hover:text-brand-brown transition-colors">Services</a>
-        <a href="#portfolio" class="hover:text-brand-brown transition-colors">Portfolio</a>
-        <a href="#contact" class="hover:text-brand-brown transition-colors">Contact</a>
+        <!-- Desktop Menu -->
+        <div
+          class="hidden md:flex space-x-8 text-sm uppercase tracking-widest text-brand-dark/70"
+        >
+          <a href="#about" class="hover:text-brand-brown transition-colors">
+            About
+          </a>
+          <a href="#services" class="hover:text-brand-brown transition-colors">
+            Services
+          </a>
+          <a href="#portfolio" class="hover:text-brand-brown transition-colors">
+            Portfolio
+          </a>
+          <a href="#contact" class="hover:text-brand-brown transition-colors">
+            Contact
+          </a>
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <button
+          id="mobile-menu-btn"
+          class="md:hidden text-brand-brown focus:outline-none"
+          aria-label="Toggle Menu"
+        >
+          <svg
+            id="menu-icon"
+            class="w-7 h-7"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              class="menu-open"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16"
+            ></path>
+            <path
+              class="menu-close hidden"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M6 18L18 6M6 6l12 12"
+            ></path>
+          </svg>
+        </button>
       </div>
+    </nav>
 
-      <!-- Mobile Menu Button -->
-      <button id="mobile-menu-btn" class="md:hidden text-brand-brown focus:outline-none" aria-label="Toggle Menu">
-        <svg id="menu-icon" class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path class="menu-open" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-          <path class="menu-close hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+    <!-- Mobile Menu Overlay -->
+    <div
+      id="mobile-menu"
+      class="md:hidden fixed inset-0 z-40 bg-brand-sand/98 backdrop-blur-xl flex flex-col justify-center items-center space-y-10 text-xl font-light uppercase tracking-[0.2em] text-brand-brown opacity-0 pointer-events-none transition-all duration-500 ease-in-out"
+    >
+      <a href="#about" class="mobile-link hover:scale-110 transition-transform">
+        About
+      </a>
+      <a
+        href="#services"
+        class="mobile-link hover:scale-110 transition-transform"
+      >
+        Services
+      </a>
+      <a
+        href="#portfolio"
+        class="mobile-link hover:scale-110 transition-transform"
+      >
+        Portfolio
+      </a>
+      <a
+        href="#contact"
+        class="mobile-link hover:scale-110 transition-transform"
+      >
+        Contact
+      </a>
+    </div>
+
+    <!-- Hero Section -->
+    <section
+      class="min-h-screen flex flex-col justify-center items-center text-center px-6 pt-20 relative"
+    >
+      <h1
+        class="text-7xl md:text-8xl lg:text-9xl text-cursive text-brand-brown mb-4"
+      >
+        Svitlana Yavorska
+      </h1>
+      <p
+        class="text-xl md:text-2xl uppercase tracking-[0.3em] text-brand-dark/80 font-light mt-4"
+      >
+        UGC Creator
+      </p>
+
+      <!-- Minimalist Scroll Down Button -->
+      <a
+        href="#about"
+        class="absolute bottom-20 left-1/2 -translate-x-1/2 flex flex-col items-center text-brand-brown opacity-60 hover:opacity-100 transition-opacity animate-bounce"
+        aria-label="Scroll to About section"
+      >
+        <span class="text-[10px] uppercase tracking-[0.3em] font-light mb-2">
+          Scroll
+        </span>
+        <svg
+          class="w-4 h-4"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="1.5"
+            d="M19 9l-7 7-7-7"
+          ></path>
         </svg>
-      </button>
-    </div>
-  </nav>
+      </a>
+    </section>
 
-  <!-- Mobile Menu Overlay -->
-  <div id="mobile-menu" class="md:hidden fixed inset-0 z-40 bg-brand-sand/98 backdrop-blur-xl flex flex-col justify-center items-center space-y-10 text-xl font-light uppercase tracking-[0.2em] text-brand-brown opacity-0 pointer-events-none transition-all duration-500 ease-in-out">
-    <a href="#about" class="mobile-link hover:scale-110 transition-transform">About</a>
-    <a href="#services" class="mobile-link hover:scale-110 transition-transform">Services</a>
-    <a href="#portfolio" class="mobile-link hover:scale-110 transition-transform">Portfolio</a>
-    <a href="#contact" class="mobile-link hover:scale-110 transition-transform">Contact</a>
-  </div>
-
-  <!-- Hero Section -->
-  <section class="min-h-screen flex flex-col justify-center items-center text-center px-6 pt-20 relative">
-    <h1 class="text-7xl md:text-8xl lg:text-9xl text-cursive text-brand-brown mb-4">Svitlana Yavorska</h1>
-    <p class="text-xl md:text-2xl uppercase tracking-[0.3em] text-brand-dark/80 font-light mt-4">UGC Creator</p>
-
-    <!-- Minimalist Scroll Down Button -->
-    <a href="#about" class="absolute bottom-20 left-1/2 -translate-x-1/2 flex flex-col items-center text-brand-brown opacity-60 hover:opacity-100 transition-opacity animate-bounce" aria-label="Scroll to About section">
-      <span class="text-[10px] uppercase tracking-[0.3em] font-light mb-2">Scroll</span>
-      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 9l-7 7-7-7"></path>
-      </svg>
-    </a>
-  </section>
-
-  <!-- About Section -->
-  <section id="about" class="py-24 px-6 max-w-6xl mx-auto">
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-      <div class="aspect-3/4 bg-white/30 rounded-xl overflow-hidden shadow-lg relative">
-        <img src="https://images.pexels.com/photos/7564595/pexels-photo-7564595.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Svitlana Yavorska" class="w-full h-full object-cover" />
+    <!-- About Section -->
+    <section id="about" class="py-24 px-6 max-w-6xl mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+        <div
+          class="aspect-3/4 bg-white/30 rounded-xl overflow-hidden shadow-lg relative"
+        >
+          <img
+            src="https://images.pexels.com/photos/7564595/pexels-photo-7564595.jpeg?auto=compress&cs=tinysrgb&w=800"
+            alt="Svitlana Yavorska"
+            class="w-full h-full object-cover"
+          />
+        </div>
+        <div>
+          <h2 class="text-5xl text-cursive text-brand-brown mb-8">About Me</h2>
+          <p class="text-lg leading-relaxed text-brand-dark/80 font-light mb-6">
+            I’m a UGC content creator based in the Netherlands, specializing in
+            product video content for brands.
+          </p>
+          <p class="text-lg leading-relaxed text-brand-dark/80 font-light">
+            My focus is on textures, details, lighting, and movement to bring
+            products to life and make them visually irresistible. I enjoy
+            working with light, textures, details, and simple compositions.
+          </p>
+        </div>
       </div>
-      <div>
-        <h2 class="text-5xl text-cursive text-brand-brown mb-8">About Me</h2>
-        <p class="text-lg leading-relaxed text-brand-dark/80 font-light mb-6">
-          I’m a UGC content creator based in the Netherlands, specializing in product video content for brands.
+    </section>
+
+    <!-- Services & Niche -->
+    <section id="services" class="py-24 px-6 bg-brand-brown text-brand-sand">
+      <div
+        class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 text-center md:text-left"
+      >
+        <div class="flex flex-col items-center md:items-start">
+          <h2 class="text-6xl text-cursive mb-12">What I do</h2>
+          <ul class="space-y-4 font-light text-lg opacity-90 text-left">
+            <li class="flex items-center gap-3">
+              <span class="w-1.5 h-1.5 rounded-full bg-brand-sand"></span>
+              UGC video creation
+            </li>
+            <li class="flex items-center gap-3">
+              <span class="w-1.5 h-1.5 rounded-full bg-brand-sand"></span>
+              Product videos & photography
+            </li>
+            <li class="flex items-center gap-3">
+              <span class="w-1.5 h-1.5 rounded-full bg-brand-sand"></span>
+              Short-form content for ads
+            </li>
+            <li class="flex items-center gap-3">
+              <span class="w-1.5 h-1.5 rounded-full bg-brand-sand"></span>
+              Content for social media
+            </li>
+            <li class="flex items-center gap-3">
+              <span class="w-1.5 h-1.5 rounded-full bg-brand-sand"></span>
+              Visual content for brands & cafes
+            </li>
+          </ul>
+        </div>
+        <div class="flex flex-col items-center md:items-start">
+          <h2 class="text-6xl text-cursive mb-12">My niche</h2>
+          <ul class="space-y-4 font-light text-lg opacity-90 text-left">
+            <li class="flex items-center gap-3">
+              <span class="w-1.5 h-1.5 rounded-full bg-brand-sand"></span>
+              Beauty & Skincare
+            </li>
+            <li class="flex items-center gap-3">
+              <span class="w-1.5 h-1.5 rounded-full bg-brand-sand"></span>
+              Food & Drinks
+            </li>
+            <li class="flex items-center gap-3">
+              <span class="w-1.5 h-1.5 rounded-full bg-brand-sand"></span>
+              Lifestyle
+            </li>
+            <li class="flex items-center gap-3">
+              <span class="w-1.5 h-1.5 rounded-full bg-brand-sand"></span>
+              Home & Decor
+            </li>
+            <li class="flex items-center gap-3">
+              <span class="w-1.5 h-1.5 rounded-full bg-brand-sand"></span>
+              Wellness & Self-care
+            </li>
+            <li class="flex items-center gap-3">
+              <span class="w-1.5 h-1.5 rounded-full bg-brand-sand"></span>
+              E-commerce brands
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="py-24 px-6 max-w-7xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-xs uppercase tracking-[0.2em] mb-4 text-brand-dark/60">
+          Portfolio
+        </h2>
+        <h3 class="text-6xl text-cursive text-brand-brown">Selected Work</h3>
+        <p class="mt-4 text-lg font-light text-brand-dark/70">
+          A collection of product photos and short-form videos.
         </p>
-        <p class="text-lg leading-relaxed text-brand-dark/80 font-light">
-          My focus is on textures, details, lighting, and movement to bring products to life and make them visually irresistible. I enjoy working with light, textures, details, and simple compositions.
-        </p>
       </div>
-    </div>
-  </section>
 
-  <!-- Services & Niche -->
-  <section id="services" class="py-24 px-6 bg-brand-brown text-brand-sand">
-    <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 text-center md:text-left">
-      <div class="flex flex-col items-center md:items-start">
-        <h2 class="text-6xl text-cursive mb-12">What I do</h2>
-        <ul class="space-y-4 font-light text-lg opacity-90 text-left">
-          <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 rounded-full bg-brand-sand"></span> UGC video creation</li>
-          <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 rounded-full bg-brand-sand"></span> Product videos & photography</li>
-          <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 rounded-full bg-brand-sand"></span> Short-form content for ads</li>
-          <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 rounded-full bg-brand-sand"></span> Content for social media</li>
-          <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 rounded-full bg-brand-sand"></span> Visual content for brands & cafes</li>
-        </ul>
-      </div>
-      <div class="flex flex-col items-center md:items-start">
-        <h2 class="text-6xl text-cursive mb-12">My niche</h2>
-        <ul class="space-y-4 font-light text-lg opacity-90 text-left">
-          <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 rounded-full bg-brand-sand"></span> Beauty & Skincare</li>
-          <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 rounded-full bg-brand-sand"></span> Food & Drinks</li>
-          <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 rounded-full bg-brand-sand"></span> Lifestyle</li>
-          <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 rounded-full bg-brand-sand"></span> Home & Decor</li>
-          <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 rounded-full bg-brand-sand"></span> Wellness & Self-care</li>
-          <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 rounded-full bg-brand-sand"></span> E-commerce brands</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- Portfolio Section -->
-  <section id="portfolio" class="py-24 px-6 max-w-7xl mx-auto">
-    <div class="text-center mb-16">
-      <h2 class="text-xs uppercase tracking-[0.2em] mb-4 text-brand-dark/60">Portfolio</h2>
-      <h3 class="text-6xl text-cursive text-brand-brown">Selected Work</h3>
-      <p class="mt-4 text-lg font-light text-brand-dark/70">A collection of product photos and short-form videos.</p>
-    </div>
-
-    <!-- Phone mockup slider for vertical videos -->
-    <div class="flex overflow-x-auto gap-8 py-12 px-4 -mx-4 snap-x snap-mandatory scroll-smooth [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] scrollbar-none" id="portfolio-grid">
-
-      <!-- Mockup 1 -->
-      <div class="snap-center shrink-0 mx-auto w-72 aspect-9/19.5 bg-black rounded-[2.5rem] p-2 relative">
-        <div class="w-full h-full rounded-4xl overflow-hidden relative bg-zinc-800 flex items-center justify-center group">
-           <img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?q=80&w=800&auto=format&fit=crop" alt="Beauty Product" class="w-full h-full object-cover opacity-90" />
-           <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition duration-300"></div>
-           <div class="absolute w-14 h-14 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center text-white shadow-lg transition-transform group-hover:scale-110">
-             <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-           </div>
+      <!-- Phone mockup slider for vertical videos -->
+      <div
+        class="flex overflow-x-auto gap-8 py-12 px-4 -mx-4 snap-x snap-mandatory scroll-smooth [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] scrollbar-none"
+        id="portfolio-grid"
+      >
+        <!-- Mockup 1 -->
+        <div
+          class="snap-center shrink-0 mx-auto w-72 aspect-9/19.5 bg-black rounded-[2.5rem] p-2 relative"
+        >
+          <div
+            class="w-full h-full rounded-4xl overflow-hidden relative bg-zinc-800 flex items-center justify-center group"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?q=80&w=800&auto=format&fit=crop"
+              alt="Beauty Product"
+              class="w-full h-full object-cover opacity-90"
+            />
+            <div
+              class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition duration-300"
+            ></div>
+            <div
+              class="absolute w-14 h-14 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center text-white shadow-lg transition-transform group-hover:scale-110"
+            >
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M8 5v14l11-7z" />
+              </svg>
+            </div>
+          </div>
+          <div
+            class="absolute top-0 inset-x-0 h-6 bg-black rounded-b-3xl mx-auto w-1/3"
+          ></div>
         </div>
-        <div class="absolute top-0 inset-x-0 h-6 bg-black rounded-b-3xl mx-auto w-1/3"></div>
-      </div>
 
-      <!-- Mockup 2 -->
-      <div class="snap-center shrink-0 mx-auto w-72 aspect-9/19.5 bg-black rounded-[2.5rem] p-2 relative">
-        <div class="w-full h-full rounded-4xl overflow-hidden relative bg-zinc-800 flex items-center justify-center group">
-           <img src="https://images.unsplash.com/photo-1556228578-0d85b1a4d571?q=80&w=800&auto=format&fit=crop" alt="Lifestyle Content" class="w-full h-full object-cover opacity-90" />
-           <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition duration-300"></div>
-           <div class="absolute w-14 h-14 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center text-white shadow-lg transition-transform group-hover:scale-110">
-             <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-           </div>
+        <!-- Mockup 2 -->
+        <div
+          class="snap-center shrink-0 mx-auto w-72 aspect-9/19.5 bg-black rounded-[2.5rem] p-2 relative"
+        >
+          <div
+            class="w-full h-full rounded-4xl overflow-hidden relative bg-zinc-800 flex items-center justify-center group"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1556228578-0d85b1a4d571?q=80&w=800&auto=format&fit=crop"
+              alt="Lifestyle Content"
+              class="w-full h-full object-cover opacity-90"
+            />
+            <div
+              class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition duration-300"
+            ></div>
+            <div
+              class="absolute w-14 h-14 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center text-white shadow-lg transition-transform group-hover:scale-110"
+            >
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M8 5v14l11-7z" />
+              </svg>
+            </div>
+          </div>
+          <div
+            class="absolute top-0 inset-x-0 h-6 bg-black rounded-b-3xl mx-auto w-1/3"
+          ></div>
         </div>
-        <div class="absolute top-0 inset-x-0 h-6 bg-black rounded-b-3xl mx-auto w-1/3"></div>
-      </div>
 
-      <!-- Mockup 3 -->
-      <div class="snap-center shrink-0 mx-auto w-72 aspect-9/19.5 bg-black rounded-[2.5rem] p-2 relative">
-        <div class="w-full h-full rounded-4xl overflow-hidden relative bg-zinc-800 flex items-center justify-center group">
-           <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=800&auto=format&fit=crop" alt="Product Demo" class="w-full h-full object-cover opacity-90" />
-           <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition duration-300"></div>
-           <div class="absolute w-14 h-14 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center text-white shadow-lg transition-transform group-hover:scale-110">
-             <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-           </div>
+        <!-- Mockup 3 -->
+        <div
+          class="snap-center shrink-0 mx-auto w-72 aspect-9/19.5 bg-black rounded-[2.5rem] p-2 relative"
+        >
+          <div
+            class="w-full h-full rounded-4xl overflow-hidden relative bg-zinc-800 flex items-center justify-center group"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=800&auto=format&fit=crop"
+              alt="Product Demo"
+              class="w-full h-full object-cover opacity-90"
+            />
+            <div
+              class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition duration-300"
+            ></div>
+            <div
+              class="absolute w-14 h-14 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center text-white shadow-lg transition-transform group-hover:scale-110"
+            >
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M8 5v14l11-7z" />
+              </svg>
+            </div>
+          </div>
+          <div
+            class="absolute top-0 inset-x-0 h-6 bg-black rounded-b-3xl mx-auto w-1/3"
+          ></div>
         </div>
-        <div class="absolute top-0 inset-x-0 h-6 bg-black rounded-b-3xl mx-auto w-1/3"></div>
-      </div>
 
-      <!-- Mockup 4 -->
-      <div class="snap-center shrink-0 mx-auto w-72 aspect-9/19.5 bg-black rounded-[2.5rem] p-2 relative">
-        <div class="w-full h-full rounded-4xl overflow-hidden relative bg-zinc-800 flex items-center justify-center group">
-           <img src="https://images.unsplash.com/photo-1616166330003-8e7c2fa12ec5?q=80&w=800&auto=format&fit=crop" alt="Home Decor" class="w-full h-full object-cover opacity-90" />
-           <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition duration-300"></div>
-           <div class="absolute w-14 h-14 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center text-white shadow-lg transition-transform group-hover:scale-110">
-             <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-           </div>
+        <!-- Mockup 4 -->
+        <div
+          class="snap-center shrink-0 mx-auto w-72 aspect-9/19.5 bg-black rounded-[2.5rem] p-2 relative"
+        >
+          <div
+            class="w-full h-full rounded-4xl overflow-hidden relative bg-zinc-800 flex items-center justify-center group"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1616166330003-8e7c2fa12ec5?q=80&w=800&auto=format&fit=crop"
+              alt="Home Decor"
+              class="w-full h-full object-cover opacity-90"
+            />
+            <div
+              class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition duration-300"
+            ></div>
+            <div
+              class="absolute w-14 h-14 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center text-white shadow-lg transition-transform group-hover:scale-110"
+            >
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M8 5v14l11-7z" />
+              </svg>
+            </div>
+          </div>
+          <div
+            class="absolute top-0 inset-x-0 h-6 bg-black rounded-b-3xl mx-auto w-1/3"
+          ></div>
         </div>
-        <div class="absolute top-0 inset-x-0 h-6 bg-black rounded-b-3xl mx-auto w-1/3"></div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Contact Section -->
-  <section id="contact" class="py-32 px-6 text-center border-t border-brand-brown/10">
-    <h2 class="text-5xl text-cursive text-brand-brown mb-6">Let's Work Together</h2>
-    <p class="text-xl font-light text-brand-dark/80 mb-12">Have a product you’d like to see in content?</p>
+    <!-- Contact Section -->
+    <section
+      id="contact"
+      class="py-32 px-6 text-center border-t border-brand-brown/10"
+    >
+      <h2 class="text-5xl text-cursive text-brand-brown mb-6">
+        Let's Work Together
+      </h2>
+      <p class="text-xl font-light text-brand-dark/80 mb-12">
+        Have a product you’d like to see in content?
+      </p>
 
-    <div class="flex flex-col items-center gap-4 text-lg">
-      <a href="mailto:svetaberynda@gmail.com" class="hover:text-brand-brown transition-colors border-b border-transparent hover:border-brand-brown pb-1">
-        svetaberynda@gmail.com
-      </a>
-      <a href="https://instagram.com/LANA_YAVORSKA" target="_blank" class="hover:text-brand-brown transition-colors border-b border-transparent hover:border-brand-brown pb-1">
-        Insta: @LANA_YAVORSKA
-      </a>
-    </div>
+      <div class="flex flex-col items-center gap-4 text-lg">
+        <a
+          href="mailto:svetaberynda@gmail.com"
+          class="hover:text-brand-brown transition-colors border-b border-transparent hover:border-brand-brown pb-1"
+        >
+          svetaberynda@gmail.com
+        </a>
+        <a
+          href="https://instagram.com/LANA_YAVORSKA"
+          target="_blank"
+          class="hover:text-brand-brown transition-colors border-b border-transparent hover:border-brand-brown pb-1"
+        >
+          Insta: @LANA_YAVORSKA
+        </a>
+      </div>
 
-    <div class="mt-16">
-      <a href="mailto:svetaberynda@gmail.com" class="inline-block px-10 py-4 bg-brand-brown text-brand-sand uppercase tracking-widest text-sm hover:bg-brand-dark transition-colors">
-        Get in touch →
-      </a>
-    </div>
-  </section>
+      <div class="mt-16">
+        <a
+          href="mailto:svetaberynda@gmail.com"
+          class="inline-block px-10 py-4 bg-brand-brown text-brand-sand uppercase tracking-widest text-sm hover:bg-brand-dark transition-colors"
+        >
+          Get in touch →
+        </a>
+      </div>
+    </section>
 
-  <!-- Footer -->
-  <footer class="py-8 text-center text-sm font-light opacity-50">
-    <p>&copy; <span id="year"></span> Svitlana Yavorska. All rights reserved.</p>
-  </footer>
+    <!-- Footer -->
+    <footer class="py-8 text-center text-sm font-light opacity-50">
+      <p>
+        &copy;
+        <span id="year"></span>
+        Svitlana Yavorska. All rights reserved.
+      </p>
+    </footer>
 
-  <script type="module" src="/src/main.js"></script>
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
-</body>
+    <script type="module" src="/src/main.js"></script>
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+  </body>
 </html>

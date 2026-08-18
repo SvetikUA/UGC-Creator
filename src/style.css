@@ -1,9 +1,17 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: 'Brittany Signature';
+  src: url('./brittany-signature.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 @theme {
   --font-serif: 'Playfair Display', serif;
   --font-sans: 'Jost', sans-serif;
-  --font-cursive: 'Alex Brush', cursive;
+  --font-cursive: 'Brittany Signature', cursive;
   
   --color-brand-sand: #d7cdc4;
   --color-brand-brown: #4a3b32;
