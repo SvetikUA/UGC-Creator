@@ -1,0 +1,23 @@
+@import "tailwindcss";
+
+@theme {
+  --font-serif: 'Playfair Display', serif;
+  --font-sans: 'Montserrat', sans-serif;
+  --color-brand-sand: #d7cdc4;
+  --color-brand-brown: #4a3b32;
+  --color-brand-dark: #2c2520;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-brand-sand);
+  color: var(--color-brand-dark);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-serif);
+}
+
+.text-cursive {
+  font-family: 'Great Vibes', cursive; /* We will use a web font for this */
+}
