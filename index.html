@@ -16,14 +16,35 @@
   <nav class="fixed w-full top-0 z-50 bg-[var(--color-brand-sand)]/90 backdrop-blur-sm border-b border-[var(--color-brand-brown)]/10">
     <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
       <a href="#" class="text-2xl font-bold font-serif tracking-wide text-[var(--color-brand-brown)]">SY.</a>
+      
+      <!-- Desktop Menu -->
       <div class="hidden md:flex space-x-8 text-sm uppercase tracking-widest text-[var(--color-brand-dark)]/70">
         <a href="#about" class="hover:text-[var(--color-brand-brown)] transition-colors">About</a>
         <a href="#services" class="hover:text-[var(--color-brand-brown)] transition-colors">Services</a>
         <a href="#portfolio" class="hover:text-[var(--color-brand-brown)] transition-colors">Portfolio</a>
         <a href="#contact" class="hover:text-[var(--color-brand-brown)] transition-colors">Contact</a>
       </div>
+
+      <!-- Mobile Menu Button -->
+      <button id="mobile-menu-btn" class="md:hidden text-[var(--color-brand-brown)] focus:outline-none" aria-label="Toggle Menu">
+        <svg id="menu-icon" class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <!-- Hamburger icon -->
+          <path class="menu-open" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          <!-- Close icon (hidden by default) -->
+          <path class="menu-close hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </button>
     </div>
+
   </nav>
+
+  <!-- Mobile Menu Overlay -->
+  <div id="mobile-menu" class="md:hidden fixed inset-0 z-40 bg-[var(--color-brand-sand)]/98 backdrop-blur-xl flex flex-col justify-center items-center space-y-10 text-xl font-light uppercase tracking-[0.2em] text-[var(--color-brand-brown)] opacity-0 pointer-events-none transition-all duration-500 ease-in-out">
+    <a href="#about" class="mobile-link hover:scale-110 transition-transform">About</a>
+    <a href="#services" class="mobile-link hover:scale-110 transition-transform">Services</a>
+    <a href="#portfolio" class="mobile-link hover:scale-110 transition-transform">Portfolio</a>
+    <a href="#contact" class="mobile-link hover:scale-110 transition-transform">Contact</a>
+  </div>
 
   <!-- Hero Section -->
   <section class="min-h-screen flex flex-col justify-center items-center text-center px-6 pt-20 relative">
@@ -89,7 +110,7 @@
     <div class="flex overflow-x-auto gap-8 py-12 px-4 -mx-4 snap-x snap-mandatory scroll-smooth [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]" id="portfolio-grid">
       
       <!-- Mockup 1 -->
-      <div class="snap-center shrink-0 mx-auto w-[280px] aspect-[9/19.5] bg-black rounded-[2.5rem] p-2 shadow-2xl relative">
+      <div class="snap-center shrink-0 mx-auto w-[280px] aspect-[9/19.5] bg-black rounded-[2.5rem] p-2 relative">
         <div class="w-full h-full rounded-[2rem] overflow-hidden relative bg-zinc-800 flex items-center justify-center group">
            <img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?q=80&w=800&auto=format&fit=crop" alt="Beauty Product" class="w-full h-full object-cover opacity-90" />
            <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition duration-300"></div>
@@ -100,7 +121,7 @@
       </div>
       
       <!-- Mockup 2 -->
-      <div class="snap-center shrink-0 mx-auto w-[280px] aspect-[9/19.5] bg-black rounded-[2.5rem] p-2 shadow-2xl relative">
+      <div class="snap-center shrink-0 mx-auto w-[280px] aspect-[9/19.5] bg-black rounded-[2.5rem] p-2 relative">
         <div class="w-full h-full rounded-[2rem] overflow-hidden relative bg-zinc-800 flex items-center justify-center group">
            <img src="https://images.unsplash.com/photo-1556228578-0d85b1a4d571?q=80&w=800&auto=format&fit=crop" alt="Lifestyle Content" class="w-full h-full object-cover opacity-90" />
            <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition duration-300"></div>
@@ -110,7 +131,7 @@
       </div>
 
       <!-- Mockup 3 -->
-      <div class="snap-center shrink-0 mx-auto w-[280px] aspect-[9/19.5] bg-black rounded-[2.5rem] p-2 shadow-2xl relative">
+      <div class="snap-center shrink-0 mx-auto w-[280px] aspect-[9/19.5] bg-black rounded-[2.5rem] p-2 relative">
         <div class="w-full h-full rounded-[2rem] overflow-hidden relative bg-zinc-800 flex items-center justify-center group">
            <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=800&auto=format&fit=crop" alt="Product Demo" class="w-full h-full object-cover opacity-90" />
            <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition duration-300"></div>
@@ -120,7 +141,7 @@
       </div>
 
       <!-- Mockup 4 -->
-      <div class="snap-center shrink-0 mx-auto w-[280px] aspect-[9/19.5] bg-black rounded-[2.5rem] p-2 shadow-2xl relative">
+      <div class="snap-center shrink-0 mx-auto w-[280px] aspect-[9/19.5] bg-black rounded-[2.5rem] p-2 relative">
         <div class="w-full h-full rounded-[2rem] overflow-hidden relative bg-zinc-800 flex items-center justify-center group">
            <img src="https://images.unsplash.com/photo-1616166330003-8e7c2fa12ec5?q=80&w=800&auto=format&fit=crop" alt="Home Decor" class="w-full h-full object-cover opacity-90" />
            <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition duration-300"></div>
@@ -130,7 +151,7 @@
       </div>
       
       <!-- Mockup 5 (Extra for slider demonstration) -->
-      <div class="snap-center shrink-0 mx-auto w-[280px] aspect-[9/19.5] bg-black rounded-[2.5rem] p-2 shadow-2xl relative">
+      <div class="snap-center shrink-0 mx-auto w-[280px] aspect-[9/19.5] bg-black rounded-[2.5rem] p-2 relative">
         <div class="w-full h-full rounded-[2rem] overflow-hidden relative bg-zinc-800 flex items-center justify-center group">
            <img src="https://images.unsplash.com/photo-1512496015851-a1cbf5f5af55?q=80&w=800&auto=format&fit=crop" alt="Jewelry" class="w-full h-full object-cover opacity-90" />
            <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition duration-300"></div>
