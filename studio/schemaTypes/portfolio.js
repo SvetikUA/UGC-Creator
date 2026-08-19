@@ -2,6 +2,7 @@ export default {
   name: 'portfolio',
   title: 'Portfolio Project',
   type: 'document',
+  icon: () => '🎬',
   fields: [
     {
       name: 'title',

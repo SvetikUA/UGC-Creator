@@ -2,6 +2,7 @@ export default {
   name: 'siteSettings',
   title: 'Site Settings',
   type: 'document',
+  icon: () => '⚙️',
   fieldsets: [
     { name: 'nav', title: '1. Navigation & Logo', options: { collapsible: true, collapsed: false } },
     { name: 'hero', title: '2. Hero Section', options: { collapsible: true, collapsed: false } },
