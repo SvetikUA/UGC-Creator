@@ -19,7 +19,8 @@ export default defineConfig({
           .items([
             // Portfolio English Folder
             S.listItem()
-              .title('🇬🇧 Portfolio (EN)')
+              .title('Portfolio (EN)')
+              .icon(() => '🇬🇧')
               .child(
                 S.documentList()
                   .title('English Projects')
@@ -28,7 +29,8 @@ export default defineConfig({
               ),
             // Portfolio Dutch Folder
             S.listItem()
-              .title('🇳🇱 Portfolio (NL)')
+              .title('Portfolio (NL)')
+              .icon(() => '🇳🇱')
               .child(
                 S.documentList()
                   .title('Dutch Projects')
