@@ -2,7 +2,7 @@ import { defineConfig } from 'vite';
 import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
-  base: '/svitlana-yavorska/',
+  base: '/UGC-Creator/',
   plugins: [
     tailwindcss(),
   ],
