@@ -8,7 +8,7 @@ export default defineConfig({
   name: 'default',
   title: 'svitlana-yavorska-cms',
 
-  projectId: 'bmtxz3jd',
+  projectId: '59s6zizo',
   dataset: 'production',
 
   plugins: [
