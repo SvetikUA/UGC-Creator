@@ -16,7 +16,33 @@ export default defineConfig({
       structure: (S) =>
         S.list()
           .title('Content')
-          .items(S.documentTypeListItems().filter(item => item.getId() !== 'translation.metadata'))
+          .items([
+            // Portfolio English Folder
+            S.listItem()
+              .title('Portfolio 🇬🇧 (EN)')
+              .icon(() => '🇬🇧')
+              .child(
+                S.documentList()
+                  .title('English Projects')
+                  .filter('_type == "portfolio" && language == "en"')
+                  .defaultOrdering([{field: '_createdAt', direction: 'desc'}])
+              ),
+            // Portfolio Dutch Folder
+            S.listItem()
+              .title('Portfolio 🇳🇱 (NL)')
+              .icon(() => '🇳🇱')
+              .child(
+                S.documentList()
+                  .title('Dutch Projects')
+                  .filter('_type == "portfolio" && language == "nl"')
+                  .defaultOrdering([{field: '_createdAt', direction: 'desc'}])
+              ),
+            S.divider(),
+            // All other types (Site Settings)
+            ...S.documentTypeListItems().filter(
+              (item) => item.getId() !== 'translation.metadata' && item.getId() !== 'portfolio'
+            ),
+          ]),
     }),
     visionTool(),
     documentInternationalization({
