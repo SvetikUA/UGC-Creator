@@ -25,12 +25,42 @@ mobileLinks.forEach(link => {
   });
 });
 
+// Language Management
+const urlParams = new URLSearchParams(window.location.search);
+let currentLang = urlParams.get('lang');
+
+if (currentLang) {
+  localStorage.setItem('preferredLang', currentLang);
+} else {
+  currentLang = localStorage.getItem('preferredLang') || 'nl';
+}
+
+// Update language buttons styling and events
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    if (btn.dataset.lang === currentLang) {
+      btn.classList.add('font-bold', 'text-brand-brown');
+      btn.classList.remove('opacity-30'); // if you had opacity
+    } else {
+      btn.classList.remove('font-bold', 'text-brand-brown');
+    }
+    
+    btn.addEventListener('click', () => {
+      window.location.href = `?lang=${btn.dataset.lang}`;
+    });
+  });
+});
+
 import { client, urlFor } from './sanity';
 
 // Fetch site settings from Sanity
 async function loadSiteSettings() {
   try {
-    let settings = await client.fetch(`*[_type == "siteSettings"][0]`);
+    let settings = await client.fetch(`*[_type == "siteSettings" && language == "${currentLang}"][0]`);
+    if (!settings) {
+      // Fallback to the document without language (for migration purposes)
+      settings = await client.fetch(`*[_type == "siteSettings"][0]`);
+    }
     if (!settings) settings = {};
 
     // Update Logo
@@ -137,34 +167,29 @@ async function loadSiteSettings() {
     const contactSubtitle = document.getElementById('contact-subtitle');
     if (contactSubtitle) contactSubtitle.textContent = settings.contactSubtitle || "Have a product you’d like to see in content?";
 
-    const contactInsta = document.getElementById('contact-insta');
-    if (contactInsta) {
-      contactInsta.textContent = `Insta: ${settings.contactInsta || '@LANA_YAVORSKA'}`;
-      contactInsta.href = settings.contactInstaLink || 'https://instagram.com/LANA_YAVORSKA';
+    const socialLinksContainer = document.getElementById('contact-social-links');
+    if (socialLinksContainer) {
+      if (settings.socialLinks && settings.socialLinks.length > 0) {
+        socialLinksContainer.innerHTML = settings.socialLinks.map(link => `
+          <a href="${link.url || '#'}" target="_blank" class="group flex items-center gap-2 hover:text-brand-brown transition-colors border-b border-brand-brown/30 hover:border-brand-brown pb-1 min-h-[28px]">
+            <span>${link.platform || ''} ${link.handle || ''}</span>
+            <svg class="w-4 h-4 opacity-40 group-hover:opacity-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+          </a>
+        `).join('');
+      } else {
+        socialLinksContainer.innerHTML = `
+          <a href="https://instagram.com/LANA_YAVORSKA" target="_blank" class="group flex items-center gap-2 hover:text-brand-brown transition-colors border-b border-brand-brown/30 hover:border-brand-brown pb-1 min-h-[28px]">
+            <span>Insta: @LANA_YAVORSKA</span>
+            <svg class="w-4 h-4 opacity-40 group-hover:opacity-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+          </a>
+        `;
+      }
     }
 
     const contactButton = document.getElementById('contact-button');
     if (contactButton) {
       contactButton.textContent = settings.contactButtonText || 'Get in touch →';
       contactButton.href = `mailto:${settings.contactEmail || 'svetaberynda@gmail.com'}`;
-    }
-
-    const contactPhoto1 = document.getElementById('contact-photo-1');
-    if (contactPhoto1 && settings.contactPhoto1) {
-      contactPhoto1.src = urlFor(settings.contactPhoto1).width(400).url();
-      contactPhoto1.classList.remove('hidden');
-    } else if (contactPhoto1) {
-      contactPhoto1.src = 'https://images.pexels.com/photos/7564595/pexels-photo-7564595.jpeg?auto=compress&cs=tinysrgb&w=400';
-      contactPhoto1.classList.remove('hidden');
-    }
-
-    const contactPhoto2 = document.getElementById('contact-photo-2');
-    if (contactPhoto2 && settings.contactPhoto2) {
-      contactPhoto2.src = urlFor(settings.contactPhoto2).width(400).url();
-      contactPhoto2.classList.remove('hidden');
-    } else if (contactPhoto2) {
-      contactPhoto2.src = 'https://images.pexels.com/photos/432059/pexels-photo-432059.jpeg?auto=compress&cs=tinysrgb&w=400';
-      contactPhoto2.classList.remove('hidden');
     }
 
   } catch (error) {
@@ -178,11 +203,20 @@ async function loadPortfolio() {
   if (!grid) return;
 
   try {
-    const projects = await client.fetch(`*[_type == "portfolio"] | order(_createdAt desc) {
+    let projects = await client.fetch(`*[_type == "portfolio" && language == "${currentLang}"] | order(_createdAt desc) {
       ...,
       "videoFileUrl": videoFile.asset->url,
       "coverImageUrl": coverImage.asset->url
     }`);
+
+    // Fallback for non-translated legacy documents
+    if (!projects || projects.length === 0) {
+      projects = await client.fetch(`*[_type == "portfolio" && !defined(language)] | order(_createdAt desc) {
+        ...,
+        "videoFileUrl": videoFile.asset->url,
+        "coverImageUrl": coverImage.asset->url
+      }`);
+    }
 
     if (projects.length === 0) {
       grid.innerHTML = '<p class="text-center w-full text-brand-dark/50 italic py-10">Немає проєктів. Додайте перше відео в Sanity Studio!</p>';

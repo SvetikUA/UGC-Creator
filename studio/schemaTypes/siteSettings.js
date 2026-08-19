@@ -163,18 +163,23 @@ export default {
       initialValue: 'svetaberynda@gmail.com',
     },
     {
-      name: 'contactInsta',
-      title: 'Instagram Handle',
-      type: 'string',
+      name: 'socialLinks',
+      title: 'Social Media Links',
+      type: 'array',
       fieldset: 'contact',
-      initialValue: '@LANA_YAVORSKA',
-    },
-    {
-      name: 'contactInstaLink',
-      title: 'Instagram Link',
-      type: 'url',
-      fieldset: 'contact',
-      initialValue: 'https://instagram.com/LANA_YAVORSKA',
+      of: [
+        {
+          type: 'object',
+          fields: [
+            { name: 'platform', title: 'Platform Label (e.g. Insta:, TikTok:)', type: 'string' },
+            { name: 'handle', title: 'Handle / Username (e.g. @LANA_YAVORSKA)', type: 'string' },
+            { name: 'url', title: 'URL Link', type: 'url' }
+          ]
+        }
+      ],
+      initialValue: [
+        { platform: 'Insta:', handle: '@LANA_YAVORSKA', url: 'https://instagram.com/LANA_YAVORSKA' }
+      ]
     },
     {
       name: 'contactPhoto1',
