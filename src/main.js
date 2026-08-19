@@ -67,6 +67,14 @@ async function loadSiteSettings() {
         });
       });
     }
+
+    // Update Hero Section
+    const heroTitle = document.getElementById('hero-title');
+    if (heroTitle) heroTitle.textContent = settings.heroTitle || 'Svitlana Yavorska';
+    
+    const heroSubtitle = document.getElementById('hero-subtitle');
+    if (heroSubtitle) heroSubtitle.textContent = settings.heroSubtitle || 'UGC Creator';
+
   } catch (error) {
     console.error('Error fetching site settings:', error);
   }

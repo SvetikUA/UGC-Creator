@@ -4,6 +4,20 @@ export default {
   type: 'document',
   fields: [
     {
+      name: 'heroTitle',
+      title: 'Hero Title',
+      type: 'string',
+      initialValue: 'Svitlana Yavorska',
+      validation: (Rule) => Rule.required(),
+    },
+    {
+      name: 'heroSubtitle',
+      title: 'Hero Subtitle',
+      type: 'string',
+      initialValue: 'UGC Creator',
+      validation: (Rule) => Rule.required(),
+    },
+    {
       name: 'logoTop',
       title: 'Logo Top Text (Serif font)',
       type: 'string',
