@@ -12,6 +12,12 @@ export default {
     { name: 'contact', title: '6. Contact Section', options: { collapsible: true, collapsed: false } }
   ],
   fields: [
+    {
+      name: 'language',
+      type: 'string',
+      readOnly: true,
+      hidden: true,
+    },
     // --- Navigation & Logo ---
     {
       name: 'logoTop',

@@ -5,6 +5,12 @@ export default {
   icon: () => '🎬',
   fields: [
     {
+      name: 'language',
+      type: 'string',
+      readOnly: true,
+      hidden: true,
+    },
+    {
       name: 'title',
       title: 'Project Title',
       type: 'string',
@@ -27,42 +33,12 @@ export default {
       validation: (Rule) => Rule.required(),
     },
     {
-      name: 'mediaType',
-      title: 'Media Type',
-      type: 'string',
-      options: {
-        list: [
-          { title: 'Image', value: 'image' },
-          { title: 'Video', value: 'video' },
-        ],
-        layout: 'radio',
-      },
-      initialValue: 'video',
-      validation: (Rule) => Rule.required(),
-    },
-    {
-      name: 'image',
-      title: 'Project Image',
-      type: 'image',
-      options: {
-        hotspot: true,
-      },
-      hidden: ({ document }) => document?.mediaType !== 'image',
-    },
-    {
-      name: 'videoUrl',
-      title: 'Video File URL (or direct link)',
-      type: 'url',
-      description: 'Upload video to a service (or use Sanity mux plugin later). For now, you can paste an mp4 link.',
-      hidden: ({ document }) => document?.mediaType !== 'video',
-    },
-    {
       name: 'coverImage',
       title: 'Video Cover Image (Thumbnail)',
       type: 'image',
       description: 'This image will be shown before the user clicks Play.',
       options: { hotspot: true },
-      hidden: ({ document }) => document?.mediaType !== 'video',
+      hidden: false,
     },
     {
       name: 'videoFile',
@@ -71,7 +47,25 @@ export default {
       options: {
         accept: 'video/*'
       },
-      hidden: ({ document }) => document?.mediaType !== 'video',
+      hidden: false,
     }
   ],
+  preview: {
+    select: {
+      title: 'title',
+      language: 'language',
+    },
+    prepare(selection) {
+      const { title, language } = selection
+      let flag = '🎬' // default icon
+      if (language === 'en') flag = '🇬🇧'
+      if (language === 'nl') flag = '🇳🇱'
+
+      return {
+        title: title || 'Untitled Project',
+        subtitle: language ? `Language: ${language.toUpperCase()}` : 'Language: not set',
+        media: () => flag
+      }
+    }
+  }
 }
