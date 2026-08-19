@@ -30,8 +30,8 @@ import { client, urlFor } from './sanity';
 // Fetch site settings from Sanity
 async function loadSiteSettings() {
   try {
-    const settings = await client.fetch(`*[_type == "siteSettings"][0]`);
-    if (!settings) return;
+    let settings = await client.fetch(`*[_type == "siteSettings"][0]`);
+    if (!settings) settings = {};
 
     // Update Logo
     const logoContainer = document.getElementById('dynamic-logo');
