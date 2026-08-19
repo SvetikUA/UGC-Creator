@@ -27,6 +27,51 @@ mobileLinks.forEach(link => {
 
 import { client, urlFor } from './sanity';
 
+// Fetch site settings from Sanity
+async function loadSiteSettings() {
+  try {
+    const settings = await client.fetch(`*[_type == "siteSettings"][0]`);
+    if (!settings) return;
+
+    // Update Logo
+    const logoContainer = document.getElementById('dynamic-logo');
+    if (logoContainer) {
+      logoContainer.innerHTML = `
+        <span class="font-serif font-normal text-sm md:text-lg tracking-widest leading-none">${settings.logoTop || 'SVITLANA YAVORSKA'}</span>
+        <span class="font-sans font-light text-[9px] md:text-[11px] tracking-[0.3em] mt-1 leading-none">${settings.logoBottom || 'CREATOR'}</span>
+      `;
+    }
+
+    // Update Desktop Nav
+    const desktopNav = document.getElementById('desktop-nav');
+    if (desktopNav && settings.navLinks) {
+      desktopNav.innerHTML = settings.navLinks.map(link => 
+        `<a href="${link.url}" class="hover:text-brand-brown transition-colors">${link.title}</a>`
+      ).join('');
+    }
+
+    // Update Mobile Nav
+    const mobileNav = document.getElementById('mobile-nav-links');
+    if (mobileNav && settings.navLinks) {
+      mobileNav.innerHTML = settings.navLinks.map(link => 
+        `<a href="${link.url}" class="mobile-link hover:scale-110 transition-transform">${link.title}</a>`
+      ).join('');
+
+      // Re-attach event listeners to new mobile links
+      const newMobileLinks = document.querySelectorAll('.mobile-link');
+      newMobileLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          if (!document.getElementById('mobile-menu').classList.contains('hidden')) {
+            toggleMenu();
+          }
+        });
+      });
+    }
+  } catch (error) {
+    console.error('Error fetching site settings:', error);
+  }
+}
+
 // Fetch portfolio from Sanity
 async function loadPortfolio() {
   const grid = document.getElementById('portfolio-grid');
@@ -102,4 +147,7 @@ async function loadPortfolio() {
   }
 }
 
-document.addEventListener('DOMContentLoaded', loadPortfolio);
+document.addEventListener('DOMContentLoaded', () => {
+  loadSiteSettings();
+  loadPortfolio();
+});

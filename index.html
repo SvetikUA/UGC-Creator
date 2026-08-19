@@ -12,27 +12,11 @@
       class="fixed w-full top-0 z-50 bg-brand-sand/90 backdrop-blur-sm border-b border-brand-brown/10"
     >
       <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-        <a href="#" class="flex flex-col items-center justify-center text-brand-brown transition-transform hover:scale-105">
-          <span class="font-serif font-normal text-sm md:text-lg tracking-widest leading-none">SVITLANA YAVORSKA</span>
-          <span class="font-sans font-light text-[9px] md:text-[11px] tracking-[0.3em] mt-1 leading-none">CREATOR</span>
+        <a href="#" id="dynamic-logo" class="flex flex-col items-center justify-center text-brand-brown transition-transform hover:scale-105 min-h-[32px]">
         </a>
 
         <!-- Desktop Menu -->
-        <div
-          class="hidden md:flex space-x-8 text-sm uppercase tracking-widest text-brand-dark/70"
-        >
-          <a href="#about" class="hover:text-brand-brown transition-colors">
-            About
-          </a>
-          <a href="#services" class="hover:text-brand-brown transition-colors">
-            Services
-          </a>
-          <a href="#portfolio" class="hover:text-brand-brown transition-colors">
-            Portfolio
-          </a>
-          <a href="#contact" class="hover:text-brand-brown transition-colors">
-            Contact
-          </a>
+        <div id="desktop-nav" class="hidden md:flex space-x-8 text-sm uppercase tracking-widest text-brand-dark/70">
         </div>
 
         <!-- Mobile Menu Button -->
@@ -72,27 +56,8 @@
       id="mobile-menu"
       class="md:hidden fixed inset-0 z-40 bg-brand-sand/98 backdrop-blur-xl flex flex-col justify-center items-center space-y-10 text-xl font-light uppercase tracking-[0.2em] text-brand-brown opacity-0 pointer-events-none transition-all duration-500 ease-in-out"
     >
-      <a href="#about" class="mobile-link hover:scale-110 transition-transform">
-        About
-      </a>
-      <a
-        href="#services"
-        class="mobile-link hover:scale-110 transition-transform"
-      >
-        Services
-      </a>
-      <a
-        href="#portfolio"
-        class="mobile-link hover:scale-110 transition-transform"
-      >
-        Portfolio
-      </a>
-      <a
-        href="#contact"
-        class="mobile-link hover:scale-110 transition-transform"
-      >
-        Contact
-      </a>
+      <div id="mobile-nav-links" class="flex flex-col items-center space-y-10 w-full">
+      </div>
     </div>
 
     <!-- Hero Section -->
