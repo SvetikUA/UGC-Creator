@@ -56,6 +56,14 @@ export default {
       hidden: ({ document }) => document?.mediaType !== 'video',
     },
     {
+      name: 'coverImage',
+      title: 'Video Cover Image (Thumbnail)',
+      type: 'image',
+      description: 'This image will be shown before the user clicks Play.',
+      options: { hotspot: true },
+      hidden: ({ document }) => document?.mediaType !== 'video',
+    },
+    {
       name: 'videoFile',
       title: 'Video File Upload',
       type: 'file',

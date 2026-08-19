@@ -143,7 +143,8 @@ async function loadPortfolio() {
   try {
     const projects = await client.fetch(`*[_type == "portfolio"] | order(_createdAt desc) {
       ...,
-      "videoFileUrl": videoFile.asset->url
+      "videoFileUrl": videoFile.asset->url,
+      "coverImageUrl": coverImage.asset->url
     }`);
 
     if (projects.length === 0) {
@@ -160,7 +161,8 @@ async function loadPortfolio() {
       } else if (project.mediaType === 'video' && (project.videoUrl || project.videoFileUrl)) {
         isVideo = true;
         const url = project.videoUrl || project.videoFileUrl;
-        mediaContent = `<video src="${url}" class="w-full h-full object-cover opacity-90 pointer-events-none" loop playsinline preload="metadata"></video>`;
+        const posterAttr = project.coverImageUrl ? `poster="${project.coverImageUrl}"` : '';
+        mediaContent = `<video src="${url}" ${posterAttr} class="w-full h-full object-cover opacity-90 pointer-events-none" loop playsinline preload="metadata"></video>`;
       }
 
       return `
