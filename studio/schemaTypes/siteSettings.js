@@ -4,12 +4,12 @@ export default {
   type: 'document',
   icon: () => '⚙️',
   fieldsets: [
-    { name: 'nav', title: '1. Navigation & Logo', options: { collapsible: true, collapsed: false } },
-    { name: 'hero', title: '2. Hero Section', options: { collapsible: true, collapsed: false } },
-    { name: 'about', title: '3. About Section', options: { collapsible: true, collapsed: false } },
-    { name: 'services', title: '4. Services & Niche Section', options: { collapsible: true, collapsed: false } },
-    { name: 'portfolio', title: '5. Portfolio Section', options: { collapsible: true, collapsed: false } },
-    { name: 'contact', title: '6. Contact Section', options: { collapsible: true, collapsed: false } }
+    { name: 'nav', title: '1. Navigation & Logo' },
+    { name: 'hero', title: '2. Hero Section' },
+    { name: 'about', title: '3. About Section' },
+    { name: 'services', title: '4. Services & Niche Section' },
+    { name: 'portfolio', title: '5. Portfolio Section' },
+    { name: 'contact', title: '6. Contact Section' }
   ],
   fields: [
     {
