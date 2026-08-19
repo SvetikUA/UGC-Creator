@@ -2,25 +2,19 @@ export default {
   name: 'siteSettings',
   title: 'Site Settings',
   type: 'document',
+  fieldsets: [
+    { name: 'nav', title: '1. Navigation & Logo', options: { collapsible: true, collapsed: false } },
+    { name: 'hero', title: '2. Hero Section', options: { collapsible: true, collapsed: false } },
+    { name: 'about', title: '3. About Section', options: { collapsible: true, collapsed: false } },
+    { name: 'services', title: '4. Services & Niche Section', options: { collapsible: true, collapsed: false } }
+  ],
   fields: [
-    {
-      name: 'heroTitle',
-      title: 'Hero Title',
-      type: 'string',
-      initialValue: 'Svitlana Yavorska',
-      validation: (Rule) => Rule.required(),
-    },
-    {
-      name: 'heroSubtitle',
-      title: 'Hero Subtitle',
-      type: 'string',
-      initialValue: 'UGC Creator',
-      validation: (Rule) => Rule.required(),
-    },
+    // --- Navigation & Logo ---
     {
       name: 'logoTop',
       title: 'Logo Top Text (Serif font)',
       type: 'string',
+      fieldset: 'nav',
       initialValue: 'SVITLANA YAVORSKA',
       validation: (Rule) => Rule.required(),
     },
@@ -28,6 +22,7 @@ export default {
       name: 'logoBottom',
       title: 'Logo Bottom Text (Sans-serif font)',
       type: 'string',
+      fieldset: 'nav',
       initialValue: 'CREATOR',
       validation: (Rule) => Rule.required(),
     },
@@ -35,6 +30,7 @@ export default {
       name: 'navLinks',
       title: 'Navigation Links',
       type: 'array',
+      fieldset: 'nav',
       of: [
         {
           type: 'object',
@@ -50,6 +46,90 @@ export default {
         { title: 'Portfolio', url: '#portfolio' },
         { title: 'Contact', url: '#contact' },
       ]
+    },
+    
+    // --- Hero Section ---
+    {
+      name: 'heroTitle',
+      title: 'Hero Title',
+      type: 'string',
+      fieldset: 'hero',
+      initialValue: 'Svitlana Yavorska',
+      validation: (Rule) => Rule.required(),
+    },
+    {
+      name: 'heroSubtitle',
+      title: 'Hero Subtitle',
+      type: 'string',
+      fieldset: 'hero',
+      initialValue: 'UGC Creator',
+      validation: (Rule) => Rule.required(),
+    },
+
+    // --- About Section ---
+    {
+      name: 'aboutTitle',
+      title: 'About Section Title',
+      type: 'string',
+      fieldset: 'about',
+      initialValue: 'About Me',
+    },
+    {
+      name: 'aboutImage',
+      title: 'About Section Photo',
+      type: 'image',
+      fieldset: 'about',
+      options: { hotspot: true },
+    },
+    {
+      name: 'aboutText',
+      title: 'About Section Text',
+      type: 'text',
+      fieldset: 'about',
+      description: 'Use Enter to create new paragraphs.',
+      initialValue: 'I’m a UGC content creator based in the Netherlands, specializing in product video content for brands.\n\nMy focus is on textures, details, lighting, and movement to bring products to life and make them visually irresistible. I enjoy working with light, textures, details, and simple compositions.',
+    },
+    
+    // --- Services & Niche Section ---
+    {
+      name: 'servicesTitle',
+      title: 'Services Title',
+      type: 'string',
+      fieldset: 'services',
+      initialValue: 'What I do',
+    },
+    {
+      name: 'servicesList',
+      title: 'Services List',
+      type: 'array',
+      fieldset: 'services',
+      of: [{ type: 'string' }],
+      initialValue: [
+        'UGC video creation',
+        'Product videos & photography',
+        'Short-form content for ads',
+        'Content for social media',
+        'Visual content for brands & cafes'
+      ],
+    },
+    {
+      name: 'nicheTitle',
+      title: 'Niche Title',
+      type: 'string',
+      fieldset: 'services',
+      initialValue: 'My niche',
+    },
+    {
+      name: 'nicheList',
+      title: 'Niche List',
+      type: 'array',
+      fieldset: 'services',
+      of: [{ type: 'string' }],
+      initialValue: [
+        'Beauty & Skincare',
+        'Food & Drinks',
+        'Lifestyle'
+      ],
     }
   ]
 }

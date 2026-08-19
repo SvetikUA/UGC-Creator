@@ -75,6 +75,61 @@ async function loadSiteSettings() {
     const heroSubtitle = document.getElementById('hero-subtitle');
     if (heroSubtitle) heroSubtitle.textContent = settings.heroSubtitle || 'UGC Creator';
 
+    // Update About Section
+    const aboutTitle = document.getElementById('about-title');
+    if (aboutTitle) aboutTitle.textContent = settings.aboutTitle || 'About Me';
+
+    const aboutImage = document.getElementById('about-image');
+    if (aboutImage) {
+      if (settings.aboutImage) {
+        aboutImage.src = urlFor(settings.aboutImage).width(800).url();
+        aboutImage.alt = settings.aboutTitle || 'About Me';
+        aboutImage.classList.remove('hidden');
+      } else {
+        // Fallback image
+        aboutImage.src = 'https://images.pexels.com/photos/7564595/pexels-photo-7564595.jpeg?auto=compress&cs=tinysrgb&w=800';
+        aboutImage.classList.remove('hidden');
+      }
+    }
+
+    const aboutTextContainer = document.getElementById('about-text');
+    if (aboutTextContainer) {
+      const text = settings.aboutText || 'I’m a UGC content creator based in the Netherlands, specializing in product video content for brands.\n\nMy focus is on textures, details, lighting, and movement to bring products to life and make them visually irresistible. I enjoy working with light, textures, details, and simple compositions.';
+      
+      const paragraphs = text.split('\n').filter(p => p.trim() !== '');
+      aboutTextContainer.innerHTML = paragraphs.map((p, index) => {
+        const isLast = index === paragraphs.length - 1;
+        return `<p class="text-lg leading-relaxed text-brand-dark/80 font-light ${isLast ? '' : 'mb-6'}">${p}</p>`;
+      }).join('');
+    }
+
+    // Update Services Section
+    const servicesTitle = document.getElementById('services-title');
+    if (servicesTitle) servicesTitle.textContent = settings.servicesTitle || 'What I do';
+
+    const servicesList = document.getElementById('services-list');
+    if (servicesList && settings.servicesList) {
+      servicesList.innerHTML = settings.servicesList.map(item => `
+        <li class="flex items-center gap-3">
+          <span class="w-1.5 h-1.5 rounded-full bg-brand-sand"></span>
+          ${item}
+        </li>
+      `).join('');
+    }
+
+    const nicheTitle = document.getElementById('niche-title');
+    if (nicheTitle) nicheTitle.textContent = settings.nicheTitle || 'My niche';
+
+    const nicheList = document.getElementById('niche-list');
+    if (nicheList && settings.nicheList) {
+      nicheList.innerHTML = settings.nicheList.map(item => `
+        <li class="flex items-center gap-3">
+          <span class="w-1.5 h-1.5 rounded-full bg-brand-sand"></span>
+          ${item}
+        </li>
+      `).join('');
+    }
+
   } catch (error) {
     console.error('Error fetching site settings:', error);
   }
