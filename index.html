@@ -154,40 +154,36 @@
     </section>
 
     <!-- Contact Section -->
-    <section
-      id="contact"
-      class="py-32 px-6 text-center border-t border-brand-brown/10"
-    >
-      <h2 class="text-5xl text-cursive text-brand-brown mb-6">
-        Let's Work Together
-      </h2>
-      <p class="text-xl font-light text-brand-dark/80 mb-12">
-        Have a product you’d like to see in content?
-      </p>
+    <!-- Contact Section -->
+    <section id="contact" class="py-32 px-6 border-t border-brand-brown/10 relative overflow-hidden">
+      <div class="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-between gap-16 relative z-10">
+        
+        <!-- Text Content -->
+        <div class="text-center md:text-left flex-1">
+          <h2 id="contact-title" class="text-5xl text-cursive text-brand-brown mb-6 min-h-[48px]"></h2>
+          <p id="contact-subtitle" class="text-xl font-light text-brand-dark/80 mb-12 min-h-[28px]"></p>
 
-      <div class="flex flex-col items-center gap-4 text-lg">
-        <a
-          href="mailto:svetaberynda@gmail.com"
-          class="hover:text-brand-brown transition-colors border-b border-transparent hover:border-brand-brown pb-1"
-        >
-          svetaberynda@gmail.com
-        </a>
-        <a
-          href="https://instagram.com/LANA_YAVORSKA"
-          target="_blank"
-          class="hover:text-brand-brown transition-colors border-b border-transparent hover:border-brand-brown pb-1"
-        >
-          Insta: @LANA_YAVORSKA
-        </a>
-      </div>
+          <div class="flex flex-col items-center md:items-start gap-4 text-lg">
+            <a id="contact-insta" href="#" target="_blank" class="hover:text-brand-brown transition-colors border-b border-transparent hover:border-brand-brown pb-1 min-h-[28px]"></a>
+          </div>
 
-      <div class="mt-16">
-        <a
-          href="mailto:svetaberynda@gmail.com"
-          class="inline-block px-10 py-4 bg-brand-brown text-brand-sand uppercase tracking-widest text-sm hover:bg-brand-dark transition-colors"
-        >
-          Get in touch →
-        </a>
+          <div class="mt-12">
+            <a id="contact-button" href="#" class="inline-block px-10 py-4 bg-brand-brown text-brand-sand uppercase tracking-widest text-sm hover:bg-brand-dark transition-colors">
+              Get in touch →
+            </a>
+          </div>
+        </div>
+
+        <!-- Photos Collage -->
+        <div class="relative w-full max-w-sm flex-1 h-[400px]">
+          <div class="absolute top-0 right-4 md:right-12 w-40 md:w-52 aspect-3/4 bg-white/80 backdrop-blur-sm p-2 pb-8 shadow-2xl rotate-[6deg] z-20 transition-transform hover:rotate-[8deg] hover:scale-105">
+            <img id="contact-photo-1" src="" class="w-full h-full object-cover hidden" />
+          </div>
+          <div class="absolute top-12 left-0 md:left-4 w-40 md:w-52 aspect-3/4 bg-white/80 backdrop-blur-sm p-2 pb-8 shadow-xl rotate-[-4deg] z-10 transition-transform hover:rotate-[-6deg] hover:scale-105">
+            <img id="contact-photo-2" src="" class="w-full h-full object-cover hidden" />
+          </div>
+        </div>
+
       </div>
     </section>
 

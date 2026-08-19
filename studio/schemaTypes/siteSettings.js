@@ -6,7 +6,8 @@ export default {
     { name: 'nav', title: '1. Navigation & Logo', options: { collapsible: true, collapsed: false } },
     { name: 'hero', title: '2. Hero Section', options: { collapsible: true, collapsed: false } },
     { name: 'about', title: '3. About Section', options: { collapsible: true, collapsed: false } },
-    { name: 'services', title: '4. Services & Niche Section', options: { collapsible: true, collapsed: false } }
+    { name: 'services', title: '4. Services & Niche Section', options: { collapsible: true, collapsed: false } },
+    { name: 'contact', title: '5. Contact Section', options: { collapsible: true, collapsed: false } }
   ],
   fields: [
     // --- Navigation & Logo ---
@@ -130,6 +131,64 @@ export default {
         'Food & Drinks',
         'Lifestyle'
       ],
+    },
+    
+    // --- Contact Section ---
+    {
+      name: 'contactTitle',
+      title: 'Contact Title',
+      type: 'string',
+      fieldset: 'contact',
+      initialValue: "Let's Work Together",
+    },
+    {
+      name: 'contactSubtitle',
+      title: 'Contact Subtitle',
+      type: 'string',
+      fieldset: 'contact',
+      initialValue: "Have a product you’d like to see in content?",
+    },
+    {
+      name: 'contactButtonText',
+      title: 'Button Text',
+      type: 'string',
+      fieldset: 'contact',
+      initialValue: "Get in touch →",
+    },
+    {
+      name: 'contactEmail',
+      title: 'Email Address',
+      type: 'string',
+      fieldset: 'contact',
+      initialValue: 'svetaberynda@gmail.com',
+    },
+    {
+      name: 'contactInsta',
+      title: 'Instagram Handle',
+      type: 'string',
+      fieldset: 'contact',
+      initialValue: '@LANA_YAVORSKA',
+    },
+    {
+      name: 'contactInstaLink',
+      title: 'Instagram Link',
+      type: 'url',
+      fieldset: 'contact',
+      initialValue: 'https://instagram.com/LANA_YAVORSKA',
+    },
+    {
+      name: 'contactPhoto1',
+      title: 'Contact Photo 1',
+      type: 'image',
+      fieldset: 'contact',
+      options: { hotspot: true },
+    },
+    {
+      name: 'contactPhoto2',
+      title: 'Contact Photo 2',
+      type: 'image',
+      fieldset: 'contact',
+      options: { hotspot: true },
     }
   ]
 }

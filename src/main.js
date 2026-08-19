@@ -130,6 +130,43 @@ async function loadSiteSettings() {
       `).join('');
     }
 
+    // Update Contact Section
+    const contactTitle = document.getElementById('contact-title');
+    if (contactTitle) contactTitle.textContent = settings.contactTitle || "Let's Work Together";
+
+    const contactSubtitle = document.getElementById('contact-subtitle');
+    if (contactSubtitle) contactSubtitle.textContent = settings.contactSubtitle || "Have a product you’d like to see in content?";
+
+    const contactInsta = document.getElementById('contact-insta');
+    if (contactInsta) {
+      contactInsta.textContent = `Insta: ${settings.contactInsta || '@LANA_YAVORSKA'}`;
+      contactInsta.href = settings.contactInstaLink || 'https://instagram.com/LANA_YAVORSKA';
+    }
+
+    const contactButton = document.getElementById('contact-button');
+    if (contactButton) {
+      contactButton.textContent = settings.contactButtonText || 'Get in touch →';
+      contactButton.href = `mailto:${settings.contactEmail || 'svetaberynda@gmail.com'}`;
+    }
+
+    const contactPhoto1 = document.getElementById('contact-photo-1');
+    if (contactPhoto1 && settings.contactPhoto1) {
+      contactPhoto1.src = urlFor(settings.contactPhoto1).width(400).url();
+      contactPhoto1.classList.remove('hidden');
+    } else if (contactPhoto1) {
+      contactPhoto1.src = 'https://images.pexels.com/photos/7564595/pexels-photo-7564595.jpeg?auto=compress&cs=tinysrgb&w=400';
+      contactPhoto1.classList.remove('hidden');
+    }
+
+    const contactPhoto2 = document.getElementById('contact-photo-2');
+    if (contactPhoto2 && settings.contactPhoto2) {
+      contactPhoto2.src = urlFor(settings.contactPhoto2).width(400).url();
+      contactPhoto2.classList.remove('hidden');
+    } else if (contactPhoto2) {
+      contactPhoto2.src = 'https://images.pexels.com/photos/432059/pexels-photo-432059.jpeg?auto=compress&cs=tinysrgb&w=400';
+      contactPhoto2.classList.remove('hidden');
+    }
+
   } catch (error) {
     console.error('Error fetching site settings:', error);
   }
