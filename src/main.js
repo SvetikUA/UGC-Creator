@@ -237,9 +237,12 @@ async function loadPortfolio() {
       let mediaContent = '';
       let isVideo = false;
 
+      // Legacy support for old images if they exist
       if (project.mediaType === 'image' && project.image) {
         mediaContent = `<img src="${urlFor(project.image).width(800).url()}" alt="${project.title}" class="w-full h-full object-cover opacity-90 pointer-events-none" />`;
-      } else if (project.mediaType === 'video' && (project.videoUrl || project.videoFileUrl)) {
+      } 
+      // Default to video for all new projects and old videos
+      else if (project.videoUrl || project.videoFileUrl) {
         isVideo = true;
         const url = project.videoUrl || project.videoFileUrl;
         const posterAttr = project.coverImageUrl ? `poster="${project.coverImageUrl}"` : '';
