@@ -7,7 +7,8 @@ export default {
     { name: 'hero', title: '2. Hero Section', options: { collapsible: true, collapsed: false } },
     { name: 'about', title: '3. About Section', options: { collapsible: true, collapsed: false } },
     { name: 'services', title: '4. Services & Niche Section', options: { collapsible: true, collapsed: false } },
-    { name: 'contact', title: '5. Contact Section', options: { collapsible: true, collapsed: false } }
+    { name: 'portfolio', title: '5. Portfolio Section', options: { collapsible: true, collapsed: false } },
+    { name: 'contact', title: '6. Contact Section', options: { collapsible: true, collapsed: false } }
   ],
   fields: [
     // --- Navigation & Logo ---
@@ -131,6 +132,29 @@ export default {
         'Food & Drinks',
         'Lifestyle'
       ],
+    },
+    
+    // --- Portfolio Section ---
+    {
+      name: 'portfolioSubtitle',
+      title: 'Portfolio Subtitle (e.g. Portfolio)',
+      type: 'string',
+      fieldset: 'portfolio',
+      initialValue: 'Portfolio',
+    },
+    {
+      name: 'portfolioTitle',
+      title: 'Portfolio Title (e.g. Selected Work)',
+      type: 'string',
+      fieldset: 'portfolio',
+      initialValue: 'Selected Work',
+    },
+    {
+      name: 'portfolioDescription',
+      title: 'Portfolio Description',
+      type: 'string',
+      fieldset: 'portfolio',
+      initialValue: 'A collection of product photos and short-form videos.',
     },
     
     // --- Contact Section ---

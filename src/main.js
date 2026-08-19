@@ -160,6 +160,16 @@ async function loadSiteSettings() {
       `).join('');
     }
 
+    // Update Portfolio Section Texts
+    const portfolioSubtitle = document.getElementById('portfolio-subtitle');
+    if (portfolioSubtitle) portfolioSubtitle.textContent = settings.portfolioSubtitle || 'Portfolio';
+
+    const portfolioTitle = document.getElementById('portfolio-title');
+    if (portfolioTitle) portfolioTitle.textContent = settings.portfolioTitle || 'Selected Work';
+
+    const portfolioDescription = document.getElementById('portfolio-description');
+    if (portfolioDescription) portfolioDescription.textContent = settings.portfolioDescription || 'A collection of product photos and short-form videos.';
+
     // Update Contact Section
     const contactTitle = document.getElementById('contact-title');
     if (contactTitle) contactTitle.textContent = settings.contactTitle || "Let's Work Together";
