@@ -219,5 +219,23 @@ export default {
       fieldset: 'contact',
       options: { hotspot: true },
     }
-  ]
+  ],
+  preview: {
+    select: {
+      title: 'logoTop',
+      language: 'language',
+    },
+    prepare(selection) {
+      const { title, language } = selection
+      let flag = '⚙️' // default icon
+      if (language === 'en') flag = '🇬🇧'
+      if (language === 'nl') flag = '🇳🇱'
+
+      return {
+        title: title || 'Site Settings',
+        subtitle: language ? `Language: ${language.toUpperCase()}` : 'Language: not set',
+        media: () => flag
+      }
+    }
+  }
 }
