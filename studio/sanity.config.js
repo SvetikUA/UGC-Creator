@@ -12,7 +12,12 @@ export default defineConfig({
   dataset: 'production',
 
   plugins: [
-    structureTool(),
+    structureTool({
+      structure: (S) =>
+        S.list()
+          .title('Content')
+          .items(S.documentTypeListItems().filter(item => item.getId() !== 'translation.metadata'))
+    }),
     visionTool(),
     documentInternationalization({
       supportedLanguages: [
