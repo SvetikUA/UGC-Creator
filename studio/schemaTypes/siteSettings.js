@@ -212,20 +212,6 @@ export default {
       initialValue: [
         { platform: 'Insta:', handle: '@LANA_YAVORSKA', url: 'https://instagram.com/LANA_YAVORSKA' }
       ]
-    },
-    {
-      name: 'contactPhoto1',
-      title: 'Contact Photo 1',
-      type: 'image',
-      fieldset: 'contact',
-      options: { hotspot: true },
-    },
-    {
-      name: 'contactPhoto2',
-      title: 'Contact Photo 2',
-      type: 'image',
-      fieldset: 'contact',
-      options: { hotspot: true },
     }
   ],
   preview: {
