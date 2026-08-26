@@ -212,6 +212,32 @@ export default {
       initialValue: [
         { platform: 'Insta:', handle: '@LANA_YAVORSKA', url: 'https://instagram.com/LANA_YAVORSKA' }
       ]
+    },
+    // --- SEO & Social Media ---
+    {
+      name: 'seoTitle',
+      title: 'SEO Title',
+      description: 'The title that appears in search engines and social media previews (e.g. Svitlana Yavorska | UGC Creator)',
+      type: 'string',
+      fieldset: 'seo',
+    },
+    {
+      name: 'seoDescription',
+      title: 'SEO Description',
+      description: 'The short description that appears below the title in links.',
+      type: 'text',
+      rows: 3,
+      fieldset: 'seo',
+    },
+    {
+      name: 'ogImage',
+      title: 'Preview Image (OG Image)',
+      description: 'The image that appears when you share the link in Telegram, Facebook, iMessage, etc. (Recommended size: 1200x630px)',
+      type: 'image',
+      fieldset: 'seo',
+      options: {
+        hotspot: true,
+      },
     }
   ],
   preview: {
