@@ -9,7 +9,8 @@ export default {
     { name: 'about', title: '🟢 3. ABOUT SECTION', options: { collapsible: true, collapsed: true } },
     { name: 'services', title: '🟢 4. SERVICES & NICHE', options: { collapsible: true, collapsed: true } },
     { name: 'portfolio', title: '🟢 5. PORTFOLIO SECTION', options: { collapsible: true, collapsed: true } },
-    { name: 'contact', title: '🟢 6. CONTACT SECTION', options: { collapsible: true, collapsed: true } }
+    { name: 'contact', title: '🟢 6. CONTACT SECTION', options: { collapsible: true, collapsed: true } },
+    { name: 'seo', title: '🟢 7. SEO & SOCIAL MEDIA', options: { collapsible: true, collapsed: true } }
   ],
   fields: [
     {
