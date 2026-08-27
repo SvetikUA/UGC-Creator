@@ -2,6 +2,7 @@ import {defineConfig} from 'sanity'
 import {structureTool} from 'sanity/structure'
 import {visionTool} from '@sanity/vision'
 import {documentInternationalization} from '@sanity/document-internationalization'
+import {orderableDocumentListDeskItem} from '@sanity/orderable-document-list'
 import {schemaTypes} from './schemaTypes'
 
 export default defineConfig({
@@ -13,30 +14,30 @@ export default defineConfig({
 
   plugins: [
     structureTool({
-      structure: (S) =>
+      structure: (S, context) =>
         S.list()
           .title('Content')
           .items([
             // Portfolio English Folder
-            S.listItem()
-              .title('Portfolio (EN)')
-              .icon(() => '🇬🇧')
-              .child(
-                S.documentList()
-                  .title('English Projects')
-                  .filter('_type == "portfolio" && language == "en"')
-                  .defaultOrdering([{field: '_createdAt', direction: 'desc'}])
-              ),
+            orderableDocumentListDeskItem({
+              type: 'portfolio',
+              title: 'Portfolio (EN)',
+              icon: () => '🇬🇧',
+              filter: `language == $lang`,
+              params: {lang: 'en'},
+              S,
+              context
+            }),
             // Portfolio Dutch Folder
-            S.listItem()
-              .title('Portfolio (NL)')
-              .icon(() => '🇳🇱')
-              .child(
-                S.documentList()
-                  .title('Dutch Projects')
-                  .filter('_type == "portfolio" && language == "nl"')
-                  .defaultOrdering([{field: '_createdAt', direction: 'desc'}])
-              ),
+            orderableDocumentListDeskItem({
+              type: 'portfolio',
+              title: 'Portfolio (NL)',
+              icon: () => '🇳🇱',
+              filter: `language == $lang`,
+              params: {lang: 'nl'},
+              S,
+              context
+            }),
             S.divider(),
             // All other types (Site Settings)
             ...S.documentTypeListItems().filter(

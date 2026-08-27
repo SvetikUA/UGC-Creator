@@ -213,7 +213,7 @@ async function loadPortfolio() {
   if (!grid) return;
 
   try {
-    let projects = await client.fetch(`*[_type == "portfolio" && language == "${currentLang}"] | order(_createdAt desc) {
+    let projects = await client.fetch(`*[_type == "portfolio" && language == "${currentLang}"] | order(orderRank) {
       ...,
       "videoFileUrl": videoFile.asset->url,
       "coverImageUrl": coverImage.asset->url
@@ -221,7 +221,7 @@ async function loadPortfolio() {
 
     // Fallback for non-translated legacy documents
     if (!projects || projects.length === 0) {
-      projects = await client.fetch(`*[_type == "portfolio" && !defined(language)] | order(_createdAt desc) {
+      projects = await client.fetch(`*[_type == "portfolio" && !defined(language)] | order(orderRank) {
         ...,
         "videoFileUrl": videoFile.asset->url,
         "coverImageUrl": coverImage.asset->url
