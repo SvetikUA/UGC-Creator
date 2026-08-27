@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
     } else {
       btn.classList.remove('font-bold', 'text-brand-brown');
     }
-    
+
     btn.addEventListener('click', () => {
       window.location.href = `?lang=${btn.dataset.lang}`;
     });
@@ -75,7 +75,7 @@ async function loadSiteSettings() {
     // Update Desktop Nav
     const desktopNav = document.getElementById('desktop-nav');
     if (desktopNav && settings.navLinks) {
-      desktopNav.innerHTML = settings.navLinks.map(link => 
+      desktopNav.innerHTML = settings.navLinks.map(link =>
         `<a href="${link.url}" class="hover:text-brand-brown transition-colors">${link.title}</a>`
       ).join('');
     }
@@ -83,7 +83,7 @@ async function loadSiteSettings() {
     // Update Mobile Nav
     const mobileNav = document.getElementById('mobile-nav-links');
     if (mobileNav && settings.navLinks) {
-      mobileNav.innerHTML = settings.navLinks.map(link => 
+      mobileNav.innerHTML = settings.navLinks.map(link =>
         `<a href="${link.url}" class="mobile-link hover:scale-110 transition-transform">${link.title}</a>`
       ).join('');
 
@@ -101,7 +101,7 @@ async function loadSiteSettings() {
     // Update Hero Section
     const heroTitle = document.getElementById('hero-title');
     if (heroTitle) heroTitle.textContent = settings.heroTitle || 'Svitlana Yavorska';
-    
+
     const heroSubtitle = document.getElementById('hero-subtitle');
     if (heroSubtitle) heroSubtitle.textContent = settings.heroSubtitle || 'UGC Creator';
 
@@ -125,7 +125,7 @@ async function loadSiteSettings() {
     const aboutTextContainer = document.getElementById('about-text');
     if (aboutTextContainer) {
       const text = settings.aboutText || 'I’m a UGC content creator based in the Netherlands, specializing in product video content for brands.\n\nMy focus is on textures, details, lighting, and movement to bring products to life and make them visually irresistible. I enjoy working with light, textures, details, and simple compositions.';
-      
+
       const paragraphs = text.split('\n').filter(p => p.trim() !== '');
       aboutTextContainer.innerHTML = paragraphs.map((p, index) => {
         const isLast = index === paragraphs.length - 1;
@@ -240,7 +240,7 @@ async function loadPortfolio() {
       // Legacy support for old images if they exist
       if (project.mediaType === 'image' && project.image) {
         mediaContent = `<img src="${urlFor(project.image).width(800).url()}" alt="${project.title}" class="w-full h-full object-cover opacity-90 pointer-events-none" />`;
-      } 
+      }
       // Default to video for all new projects and old videos
       else if (project.videoUrl || project.videoFileUrl) {
         isVideo = true;
@@ -250,7 +250,7 @@ async function loadPortfolio() {
       }
 
       return `
-        <div class="portfolio-item snap-center shrink-0 mx-auto w-72 aspect-9/19.5 bg-black rounded-[2.5rem] p-2 relative group cursor-pointer hover:-translate-y-2 transition-transform duration-300">
+        <div class="portfolio-item snap-center shrink-0 mx-auto w-72 sm:w-80 aspect-9/17 bg-black rounded-[2.5rem] p-2 relative group cursor-pointer hover:-translate-y-2 transition-transform duration-300">
           <div class="w-full h-full rounded-4xl overflow-hidden relative bg-zinc-800 flex items-center justify-center">
             ${mediaContent}
             <div class="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition duration-300 pointer-events-none"></div>
