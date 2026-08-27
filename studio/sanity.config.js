@@ -21,6 +21,7 @@ export default defineConfig({
             // Portfolio English Folder
             orderableDocumentListDeskItem({
               type: 'portfolio',
+              id: 'portfolio-en',
               title: 'Portfolio (EN)',
               icon: () => '🇬🇧',
               filter: `language == $lang`,
@@ -31,6 +32,7 @@ export default defineConfig({
             // Portfolio Dutch Folder
             orderableDocumentListDeskItem({
               type: 'portfolio',
+              id: 'portfolio-nl',
               title: 'Portfolio (NL)',
               icon: () => '🇳🇱',
               filter: `language == $lang`,
