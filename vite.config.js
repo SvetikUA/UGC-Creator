@@ -5,7 +5,7 @@ const sanitySeoPlugin = () => {
   return {
     name: 'sanity-seo',
     async transformIndexHtml(html) {
-      const query = encodeURIComponent(`*[_type == "siteSettings" && language == "en"][0]{seoTitle, seoDescription, "ogImageUrl": ogImage.asset->url}`);
+      const query = encodeURIComponent(`*[_type == "siteSettings" && language == "nl"][0]{seoTitle, seoDescription, "ogImageUrl": ogImage.asset->url}`);
       const url = `https://59s6zizo.api.sanity.io/v2023-05-03/data/query/production?query=${query}`;
       
       try {
@@ -17,9 +17,9 @@ const sanitySeoPlugin = () => {
         const description = settings.seoDescription || 'UGC Creator Portfolio';
         let image = settings.ogImageUrl || 'https://svitlanayavorska.nl/favicon.svg';
         
-        // Force JPG format, standard OG size, and compress for strict platforms like Slack/iMessage
+        // Force JPG format and reduce size for strict platforms, but do NOT hard-crop
         if (image.includes('cdn.sanity.io')) {
-          image = `${image}?w=1200&h=630&fit=crop&fm=jpg&q=80`;
+          image = `${image}?w=1200&fm=jpg&q=80`;
         }
         
         const metaTags = `
