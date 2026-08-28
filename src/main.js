@@ -112,7 +112,7 @@ async function loadSiteSettings() {
     const aboutImage = document.getElementById('about-image');
     if (aboutImage) {
       if (settings.aboutImage) {
-        aboutImage.src = urlFor(settings.aboutImage).width(800).url();
+        aboutImage.src = urlFor(settings.aboutImage).width(800).auto('format').quality(80).url();
         aboutImage.alt = settings.aboutTitle || 'About Me';
         aboutImage.classList.remove('hidden');
       } else {
@@ -239,13 +239,14 @@ async function loadPortfolio() {
 
       // Legacy support for old images if they exist
       if (project.mediaType === 'image' && project.image) {
-        mediaContent = `<img src="${urlFor(project.image).width(800).url()}" alt="${project.title}" class="w-full h-full object-cover opacity-90 pointer-events-none" />`;
+        mediaContent = `<img src="${urlFor(project.image).width(600).auto('format').quality(80).url()}" alt="${project.title}" class="w-full h-full object-cover opacity-90 pointer-events-none" />`;
       }
       // Default to video for all new projects and old videos
       else if (project.videoUrl || project.videoFileUrl) {
         isVideo = true;
         const url = project.videoUrl || project.videoFileUrl;
-        const posterAttr = project.coverImageUrl ? `poster="${project.coverImageUrl}"` : '';
+        const optimizedPoster = project.coverImageUrl ? `${project.coverImageUrl}?w=600&auto=format&q=80` : '';
+        const posterAttr = optimizedPoster ? `poster="${optimizedPoster}"` : '';
         mediaContent = `<video src="${url}" ${posterAttr} class="w-full h-full object-cover opacity-90 pointer-events-none" loop playsinline preload="metadata"></video>`;
       }
 
