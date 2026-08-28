@@ -15,7 +15,12 @@ const sanitySeoPlugin = () => {
         
         const title = settings.seoTitle || 'Svitlana Yavorska | UGC Creator';
         const description = settings.seoDescription || 'UGC Creator Portfolio';
-        const image = settings.ogImageUrl || 'https://svitlanayavorska.nl/favicon.svg';
+        let image = settings.ogImageUrl || 'https://svitlanayavorska.nl/favicon.svg';
+        
+        // Force JPG format, standard OG size, and compress for strict platforms like Slack/iMessage
+        if (image.includes('cdn.sanity.io')) {
+          image = `${image}?w=1200&h=630&fit=crop&fm=jpg&q=80`;
+        }
         
         const metaTags = `
     <title>${title}</title>
