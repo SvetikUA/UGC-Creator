@@ -49,6 +49,34 @@ document.addEventListener('DOMContentLoaded', () => {
       window.location.href = `?lang=${btn.dataset.lang}`;
     });
   });
+
+  // Cookie Banner Logic
+  const cookieBanner = document.getElementById('cookie-banner');
+  const cookieAccept = document.getElementById('cookie-accept');
+  const cookieText = document.getElementById('cookie-text');
+  
+  if (cookieBanner && cookieAccept && cookieText) {
+    if (currentLang === 'nl') {
+      cookieText.textContent = "Deze website gebruikt cookies om het verkeer te analyseren en uw ervaring te verbeteren.";
+      cookieAccept.textContent = "Begrepen";
+    }
+    
+    if (!localStorage.getItem('cookieConsent')) {
+      cookieBanner.classList.remove('hidden');
+      // small delay to allow transition
+      setTimeout(() => {
+        cookieBanner.classList.remove('translate-y-full');
+      }, 100);
+    }
+    
+    cookieAccept.addEventListener('click', () => {
+      localStorage.setItem('cookieConsent', 'true');
+      cookieBanner.classList.add('translate-y-full');
+      setTimeout(() => {
+        cookieBanner.classList.add('hidden');
+      }, 500);
+    });
+  }
 });
 
 import { client, urlFor } from './sanity';

@@ -214,6 +214,16 @@
       </p>
     </footer>
 
+    <!-- Cookie Banner -->
+    <div id="cookie-banner" class="fixed bottom-0 left-0 right-0 bg-brand-brown text-brand-sand p-4 text-sm z-50 transform translate-y-full transition-transform duration-500 flex flex-col sm:flex-row justify-center sm:justify-between items-center gap-4 border-t border-brand-accent/20 hidden">
+      <p id="cookie-text" class="text-center sm:text-left">
+        This website uses cookies to analyze traffic and improve your experience.
+      </p>
+      <button id="cookie-accept" class="px-6 py-2 bg-brand-sand text-brand-brown uppercase tracking-widest text-xs font-bold hover:bg-brand-accent transition-colors whitespace-nowrap">
+        Got it
+      </button>
+    </div>
+
     <script type="module" src="/src/main.js"></script>
     <script>
       document.getElementById("year").textContent = new Date().getFullYear();
