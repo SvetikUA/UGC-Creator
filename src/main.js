@@ -327,4 +327,29 @@ async function loadPortfolio() {
 document.addEventListener('DOMContentLoaded', () => {
   loadSiteSettings();
   loadPortfolio();
+
+  // Analytics Event Tracking
+  document.body.addEventListener('click', (e) => {
+    if (typeof gtag !== 'function') return;
+
+    // Track social and contact links
+    const link = e.target.closest('a');
+    if (link) {
+      if (link.href.includes('instagram.com')) {
+        gtag('event', 'click_instagram', { event_category: 'social', event_label: link.href });
+      } else if (link.href.includes('tiktok.com')) {
+        gtag('event', 'click_tiktok', { event_category: 'social', event_label: link.href });
+      } else if (link.href.includes('mailto:') || link.id === 'contact-button') {
+        gtag('event', 'click_email', { event_category: 'contact', event_label: link.href });
+      }
+    }
+
+    // Track portfolio item interactions
+    const portfolioItem = e.target.closest('.portfolio-item');
+    if (portfolioItem) {
+      const titleEl = portfolioItem.querySelector('h4');
+      const title = titleEl ? titleEl.textContent : 'portfolio_video';
+      gtag('event', 'click_portfolio', { event_category: 'portfolio', event_label: title });
+    }
+  });
 });
